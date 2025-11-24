@@ -85,10 +85,13 @@ async function run() {
     const createEventsCollection = db.collection("createEvents");
 
     //"joinedEvent" ar data rakhar jonno data-base aa "collection" make korbo----------------------(srart)
+
     const joinedEventsDataCollection = db.collection("joinedEvent");
+    
     //"joinedEvent" ar data rakhar jonno data-base aa "collection" make korbo----------------------(end)
 
     //1:--------"createEventsCollection" ar moddhe "create-events" ar data "post" korbo akhn:
+
     //3:-----------------------------------firebase token verification:
 
     app.post("/createEvents", verifyFireBaseToken, async (req, res) => {
@@ -97,7 +100,9 @@ async function run() {
       const result = await createEventsCollection.insertOne(newEvents);
       res.send(result);
     });
+
     //----------------server theke data-base aa data post--------------------------------(end)
+
 
     //1:--------data get korbo (createEventsCollection) theke-------(start)
 
@@ -123,6 +128,7 @@ async function run() {
     //1:--------data get korbo (createEventsCollection) theke-------(end)
 
     //"eventDetails" page ar jonno "id" dea data "get" korbo-----------(start)
+
     app.get("/eventsGet/:id", async (req, res) => {
       //id receive korlam:
       const id = req.params.id;
@@ -136,7 +142,7 @@ async function run() {
     //"joinedEvent"----------ar data data-base aa "post" kora holo---------(start)
     app.post("/joinedEvent", verifyFireBaseToken, async (req, res) => {
       //client side theke je data asbe take "joinedData" ar moddhe nea nilam
-      
+
       const joinedData = req.body;
 
       //akhn check korbo je ai event aa already join kora ace kina:
