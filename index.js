@@ -154,6 +154,7 @@ async function run() {
     //"joinedEvent"----------ar data data-base aa "post" kora holo---------(end)
 
     //"joinedEvent"----------ar data data-base theke "get" kora holo---------(start)
+    
     app.get("/joinedDataGet", verifyFireBaseToken, async (req, res) => {
       //client side theke "link" ar maddhome je user ar "email" server-side aa asbe...seta "req.query" ar moddhe pabo
       const email = req.query.email;
@@ -177,6 +178,7 @@ async function run() {
     //"joinedEvent"----------ar data data-base theke "get" kora holo---------(end)
 
     //db ar "createEvents" theke only "login-user" ar "created-events" data gulu "get" korbo akhn------------(start)
+
     app.get("/userCreatedDataGet", verifyFireBaseToken, async (req, res) => {
       //client side theke "link" ar maddhome je user ar "email" server-side aa asbe...seta "req.query" ar moddhe pabo
       const email = req.query.email;
@@ -237,7 +239,7 @@ async function run() {
       res.send(result);
     });
     //"update" login-user ar "eventData"--------------------------(end)
-    
+
     // Send a ping to confirm a successful connection
 
     // await client.db("admin").command({ ping: 1 });
