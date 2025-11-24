@@ -8,7 +8,6 @@ const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const app = express();
 const port = process.env.PORT || 3000;
 
-
 //2:-----------------------------------firebase token verification:
 const admin = require("firebase-admin");
 
@@ -53,8 +52,7 @@ const verifyFireBaseToken = async (req, res, next) => {
 //2---------------------mongoDB: uri set kora holo
 //uri
 
-const uri =
-  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.bvxkl1z.mongodb.net/?appName=Cluster0`;
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.bvxkl1z.mongodb.net/?appName=Cluster0`;
 
 // 3:--------------(Create a MongoClient) with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -102,23 +100,21 @@ async function run() {
 
     //2nd method:------------------
     app.get("/eventsGet", async (req, res) => {
-        const { search, type } = req.query;
+      const { search, type } = req.query;
 
-        let query = {}; // FIXED (you forgot this)
+      let query = {}; // FIXED (you forgot this)
 
-        if (search && search.trim() !== "") {
-            query.title = { $regex: search.trim(), $options: "i" };
-        }
+      if (search && search.trim() !== "") {
+        query.title = { $regex: search.trim(), $options: "i" };
+      }
 
-        if (type && type.trim() !== "") {
-            query.eventType = type.trim();
-        }
+      if (type && type.trim() !== "") {
+        query.eventType = type.trim();
+      }
 
-        const result = await createEventsCollection.find(query).toArray();
-        res.send(result);
+      const result = await createEventsCollection.find(query).toArray();
+      res.send(result);
     });
-
-   
 
     //1:--------data get korbo (createEventsCollection) theke-------(end)
 
