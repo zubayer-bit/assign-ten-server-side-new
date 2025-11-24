@@ -1,3 +1,4 @@
 node_modules
 .env
 tree-plantation-firebase-admin-key.json
+.vercel
