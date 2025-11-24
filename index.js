@@ -136,9 +136,11 @@ async function run() {
     //"joinedEvent"----------ar data data-base aa "post" kora holo---------(start)
     app.post("/joinedEvent", verifyFireBaseToken, async (req, res) => {
       //client side theke je data asbe take "joinedData" ar moddhe nea nilam
+      
       const joinedData = req.body;
 
       //akhn check korbo je ai event aa already join kora ace kina:
+
       const existing = await joinedEventsDataCollection.findOne({
         eventId: joinedData.eventId,
         userEmail: joinedData.userEmail,
@@ -151,10 +153,11 @@ async function run() {
       const result = await joinedEventsDataCollection.insertOne(joinedData);
       res.send(result);
     });
+
     //"joinedEvent"----------ar data data-base aa "post" kora holo---------(end)
 
     //"joinedEvent"----------ar data data-base theke "get" kora holo---------(start)
-    
+
     app.get("/joinedDataGet", verifyFireBaseToken, async (req, res) => {
       //client side theke "link" ar maddhome je user ar "email" server-side aa asbe...seta "req.query" ar moddhe pabo
       const email = req.query.email;
