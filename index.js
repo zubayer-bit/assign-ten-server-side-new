@@ -72,7 +72,7 @@ app.get("/", (req, res) => {
 //4:--------------------function from mongodb: (data base ar sathe server) connect korar function
 async function run() {
   try {
-    // Connect the client to the server	(optional starting in v4.7)
+    // Connect the client to the server
     //mongodb te amr je client make kore ci,oi client ar sathe ai server ar connection make korlam ai code dea:
     // await client.connect();
 
@@ -90,6 +90,7 @@ async function run() {
 
     //1:--------"createEventsCollection" ar moddhe "create-events" ar data "post" korbo akhn:
     //3:-----------------------------------firebase token verification:
+
     app.post("/createEvents", verifyFireBaseToken, async (req, res) => {
       //  console.log("header is the post", req.headers);
       const newEvents = req.body;
@@ -101,10 +102,11 @@ async function run() {
     //1:--------data get korbo (createEventsCollection) theke-------(start)
 
     //2nd method:------------------
+
     app.get("/eventsGet", async (req, res) => {
       const { search, type } = req.query;
 
-      let query = {}; // FIXED (you forgot this)
+      let query = {}; 
 
       if (search && search.trim() !== "") {
         query.title = { $regex: search.trim(), $options: "i" };
