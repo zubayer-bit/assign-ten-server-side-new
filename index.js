@@ -237,8 +237,11 @@ async function run() {
       res.send(result);
     });
     //"update" login-user ar "eventData"--------------------------(end)
+    
     // Send a ping to confirm a successful connection
+
     // await client.db("admin").command({ ping: 1 });
+
     console.log(
       "Pinged your deployment. You successfully connected to MongoDB!"
     );
